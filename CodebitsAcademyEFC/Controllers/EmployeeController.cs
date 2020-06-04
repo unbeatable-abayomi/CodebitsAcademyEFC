@@ -43,5 +43,30 @@ namespace CodebitsAcademyEFC.Controllers
             }
 
         }
+        [HttpGet]
+        public IActionResult Delete(long Id)
+        {
+            Employee employee = _employee.GetEmployee(Id);
+            if(employee == null)
+            {
+                //error message
+                return RedirectToAction("Lists");
+            }
+            return View(employee);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteConfirm(long Id)
+        {
+            var employee = _employee.Delete(Id);
+            return View(employee);
+
+        }
+
+        public IActionResult Details(long Id)
+        {
+            Employee employee = _employee.GetEmployee(Id);
+            return View(employee);
+        }
     }
 }

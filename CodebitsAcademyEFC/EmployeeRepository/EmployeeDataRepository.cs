@@ -26,7 +26,12 @@ namespace CodebitsAcademyEFC.EmployeeRepository
             _context.SaveChanges();
         }
 
-        public Employee Delete(int Id)
+        public Employee GetEmployee(long Id)
+        {
+            return _context.EmployeesTable.Find(Id);
+        }
+
+        public Employee Delete(long Id)
         {
             Employee employee = _context.EmployeesTable.Find(Id);
             if(employee != null)

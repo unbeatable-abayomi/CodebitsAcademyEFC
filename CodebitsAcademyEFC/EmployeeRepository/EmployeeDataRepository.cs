@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace CodebitsAcademyEFC.EmployeeRepository
 {
@@ -41,6 +42,14 @@ namespace CodebitsAcademyEFC.EmployeeRepository
                 _context.SaveChanges();
             }
             return employee;
+        }
+
+        public void EditEmployee(Employee employee)
+        {
+            
+            _context.Entry(employee).State = EntityState.Modified;
+            _context.SaveChanges();
+
         }
 
 

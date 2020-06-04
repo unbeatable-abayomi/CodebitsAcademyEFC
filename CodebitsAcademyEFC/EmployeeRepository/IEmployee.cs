@@ -15,5 +15,7 @@ namespace CodebitsAcademyEFC.EmployeeRepository
        Employee Delete(long Id);
 
         Employee GetEmployee(long Id);
+
+        public void EditEmployee(Employee employee);
     }
 }

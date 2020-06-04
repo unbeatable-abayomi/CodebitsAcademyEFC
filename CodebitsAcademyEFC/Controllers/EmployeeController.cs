@@ -69,9 +69,21 @@ namespace CodebitsAcademyEFC.Controllers
             return View( employee);
         }
 
-        //public IActionResult DeleteMessage()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public IActionResult Edit(long Id)
+        {
+            Employee employee = _employee.GetEmployee(Id);
+
+            return View(employee);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Employee employee)
+        {
+            _employee.EditEmployee(employee);
+            return View("UpdatedSuccess",employee);
+        }
+
+
     }
 }

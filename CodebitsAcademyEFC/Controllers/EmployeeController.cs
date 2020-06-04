@@ -35,7 +35,7 @@ namespace CodebitsAcademyEFC.Controllers
             if (ModelState.IsValid)
             {
                 _employee.AddEmployee(employee);
-                return RedirectToAction(nameof(Create));
+                return View("SuccessMessage", employee);
             }
             else
             {
@@ -44,7 +44,7 @@ namespace CodebitsAcademyEFC.Controllers
 
         }
         [HttpGet]
-        public IActionResult Delete(long Id)
+        public IActionResult DeleteConfirm(long Id)
         {
             Employee employee = _employee.GetEmployee(Id);
             if(employee == null)
@@ -55,18 +55,23 @@ namespace CodebitsAcademyEFC.Controllers
             return View(employee);
         }
 
-        [HttpPost]
-        public IActionResult DeleteConfirm(long Id)
+        [HttpPost] 
+        public IActionResult Delete(long Id)
         {
             var employee = _employee.Delete(Id);
-            return View(employee);
+            return View("DeleteMessage",employee);
 
         }
 
         public IActionResult Details(long Id)
         {
             Employee employee = _employee.GetEmployee(Id);
-            return View(employee);
+            return View( employee);
         }
+
+        //public IActionResult DeleteMessage()
+        //{
+        //    return View();
+        //}
     }
 }

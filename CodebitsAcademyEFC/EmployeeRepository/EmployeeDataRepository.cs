@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace CodebitsAcademyEFC.EmployeeRepository
 {
     public class EmployeeDataRepository : IEmployee
@@ -52,6 +53,21 @@ namespace CodebitsAcademyEFC.EmployeeRepository
 
         }
 
+        public IQueryable<Employee> Search(string Surname)
+        {
 
+            var emm = _context.EmployeesTable.Where(c => c.LastName.Contains(Surname));
+
+
+            
+
+            //return _context.EmployeesTable.Where(c => c.LastName == surname).OrderBy(c => c.Age);
+            //return _context.EmployeesTable.Where(s => s.LastName.Contains(surname));
+            //var emmplee = _context.EmployeesTable.Where(c => c.LastName == surname);
+            //IQueryable<Employee> employee = _context.EmployeesTable.Where(c => c.LastName == surname);
+            return emm;
+        }
+
+       
     }
 }

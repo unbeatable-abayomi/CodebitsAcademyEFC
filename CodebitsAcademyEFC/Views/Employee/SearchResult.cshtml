@@ -1,0 +1,60 @@
+﻿@*@model CodebitsAcademyEFC.Models.Employee*@
+@{
+    ViewData["Title"] = "SearchResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>SearchResult</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Phone Number</th>
+            <th>Age</th>
+            <th>Gender</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.Age</td>
+                <td>@item.Gender</td>
+            </tr>
+        }
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.Age</td>
+                <td>@item.Gender</td>
+            </tr>
+        }
+
+
+
+
+
+
+    </tbody>
+</table>
+
+
+@foreach (var item in Model)
+{
+    <ul>
+        <li>@item.FirstName</li>
+        <li>@item.LastName</li>
+        <li>@item.PhoneNumber</li>
+        <li>@item.Age</li>
+        <li>@item.Gender</li>
+    </ul>
+}

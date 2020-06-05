@@ -17,5 +17,6 @@ namespace CodebitsAcademyEFC.EmployeeRepository
         Employee GetEmployee(long Id);
 
         public void EditEmployee(Employee employee);
+        IQueryable<Employee> Search(string Surname);
     }
 }

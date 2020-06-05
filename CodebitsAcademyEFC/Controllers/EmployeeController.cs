@@ -84,6 +84,31 @@ namespace CodebitsAcademyEFC.Controllers
             return View("UpdatedSuccess",employee);
         }
 
+        [HttpPost]
+        public IActionResult Search(string Surname)
+        {
+           // var employee =  _employee.Employees;
+           //dynamic employees = employee.Where(s => s.LastName.Contains(surname));
+            //Employee employees =  _employee.Search(surname)as Employee;
+
+            IQueryable<Employee> employees = _employee.Search(Surname);
+
+
+           return View("NewView",employees);
+        }
+
+        [HttpGet]
+        public IActionResult Search()
+        {
+           
+
+
+            return View();
+        }
+
+
+      
+
 
     }
 }

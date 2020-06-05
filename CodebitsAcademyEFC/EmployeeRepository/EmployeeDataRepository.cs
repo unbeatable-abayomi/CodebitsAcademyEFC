@@ -56,11 +56,11 @@ namespace CodebitsAcademyEFC.EmployeeRepository
         public IQueryable<Employee> Search(string Surname)
         {
 
-            var emm = _context.EmployeesTable.Where(c => c.LastName.Contains(Surname));
+            var emm = _context.EmployeesTable.Where(c => c.LastName.Contains(Surname)||c.Email.Contains(Surname)||c.FirstName.Contains(Surname));
 
 
             
-
+           
             //return _context.EmployeesTable.Where(c => c.LastName == surname).OrderBy(c => c.Age);
             //return _context.EmployeesTable.Where(s => s.LastName.Contains(surname));
             //var emmplee = _context.EmployeesTable.Where(c => c.LastName == surname);

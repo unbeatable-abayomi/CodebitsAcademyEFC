@@ -1,20 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CodebitsAcademyEFC.Models
+namespace CodebitsAcademyEFC.ViewModel
 {
-    public class Employee
+    public class EmployeeViewModel
     {
         [Required]
-      
-        public long Id { get; set; }
-
-        [Required]
         [StringLength(20, MinimumLength = 5)]
-        [Display (Name = "First Name")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
@@ -31,9 +28,9 @@ namespace CodebitsAcademyEFC.Models
         public string Gender { get; set; }
 
         [Required]
-        [RegularExpression(@"\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}",ErrorMessage = "Pls Enter a Vailid email address example@yahoo.com")]
+        [RegularExpression(@"\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}", ErrorMessage = "Pls Enter a Vailid email address example@yahoo.com")]
 
-        [Display(Name = "Email Address" )]
+        [Display(Name = "Email Address")]
         public string Email { get; set; }
 
         [Required]
@@ -44,7 +41,6 @@ namespace CodebitsAcademyEFC.Models
         [RegularExpression(@"[0]\d{10}$", ErrorMessage = "Pls Enter a Vailid Number xxx-xxx-xxxx")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Photo Path")]
-        public string PhotoPath { get; set; }
+        public IFormFile Photo { get; set; }
     }
 }

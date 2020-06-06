@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CodebitsAcademyEFC.EmployeeRepository;
 using CodebitsAcademyEFC.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodebitsAcademyEFC.Controllers
@@ -11,7 +12,12 @@ namespace CodebitsAcademyEFC.Controllers
     public class EmployeeController : Controller
     {
         private readonly IEmployee _employee;
-        public EmployeeController(IEmployee employee) => _employee = employee;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public EmployeeController(IEmployee employee, IWebHostEnvironment webHostEnvironment) {
+            _employee = employee;
+            _webHostEnvironment = webHostEnvironment;
+
+        } 
        
         public IActionResult Index()
         {
@@ -87,10 +93,7 @@ namespace CodebitsAcademyEFC.Controllers
         [HttpPost]
         public IActionResult Search(string Surname)
         {
-           // var employee =  _employee.Employees;
-           //dynamic employees = employee.Where(s => s.LastName.Contains(surname));
-            //Employee employees =  _employee.Search(surname)as Employee;
-
+     
             IQueryable<Employee> employees = _employee.Search(Surname);
 
 

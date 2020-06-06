@@ -39,6 +39,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+    //var photoPhath = "~/images/" + (item.PhotoPath ?? "noimage.jpg");
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)

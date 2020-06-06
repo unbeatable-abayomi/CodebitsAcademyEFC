@@ -14,6 +14,7 @@ namespace CodebitsAcademyEFC.Models
 
 
         public DbSet<Employee> EmployeesTable { get; set; }
+        public DbSet<SystemUsersModel> SystemUsersTable { get; set; }
 
 
     }

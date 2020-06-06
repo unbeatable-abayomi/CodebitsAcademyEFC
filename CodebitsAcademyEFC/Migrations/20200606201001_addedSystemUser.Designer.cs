@@ -3,14 +3,16 @@ using CodebitsAcademyEFC.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CodebitsAcademyEFC.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200606201001_addedSystemUser")]
+    partial class addedSystemUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,7 +63,7 @@ namespace CodebitsAcademyEFC.Migrations
 
             modelBuilder.Entity("CodebitsAcademyEFC.Models.SystemUsersModel", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -92,7 +94,7 @@ namespace CodebitsAcademyEFC.Migrations
                         .HasColumnType("nvarchar(5)")
                         .HasMaxLength(5);
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.ToTable("SystemUsersTable");
                 });

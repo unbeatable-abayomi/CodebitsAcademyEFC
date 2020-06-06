@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CodebitsAcademyEFC.AccountsRepository;
 using CodebitsAcademyEFC.EmployeeRepository;
 using CodebitsAcademyEFC.Models;
 using Microsoft.AspNetCore.Builder;
@@ -28,6 +29,7 @@ namespace CodebitsAcademyEFC
         {
             services.AddControllersWithViews();
             services.AddTransient<IEmployee, EmployeeDataRepository>();
+            services.AddTransient<IAccounts, AccountsDataRepository>();
             string conString = Configuration["ConnectionString:CodeBitsConection"];
             services.AddDbContext<DataContext>(options => options.UseSqlServer(conString));
             services.AddRazorPages().AddRazorRuntimeCompilation();

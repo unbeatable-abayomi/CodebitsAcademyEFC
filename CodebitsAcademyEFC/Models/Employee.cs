@@ -30,18 +30,18 @@ namespace CodebitsAcademyEFC.Models
         [Display(Name = "Gender")]
         public string Gender { get; set; }
 
-        [Required(ErrorMessage = "Pls Enter a Vailid email address example@yahoo.com")]
-        [RegularExpression(@"\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}")]
+        [Required]
+        [RegularExpression(@"\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}",ErrorMessage = "Pls Enter a Vailid email address example@yahoo.com")]
 
-        [Display(Name = "Email Address")]
+        [Display(Name = "Email Address" )]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.MultilineText)]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "Pls Enter a Vailid Number xxx-xxx-xxxx")]
-        [RegularExpression(@"[0]\d{10}$")]
+        [Required]
+        [RegularExpression(@"[0]\d{10}$", ErrorMessage = "Pls Enter a Vailid Number xxx-xxx-xxxx")]
         public string PhoneNumber { get; set; }
     }
 }

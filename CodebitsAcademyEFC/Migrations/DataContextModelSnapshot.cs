@@ -54,6 +54,9 @@ namespace CodebitsAcademyEFC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("EmployeesTable");
@@ -76,8 +79,8 @@ namespace CodebitsAcademyEFC.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(5)")
-                        .HasMaxLength(5);
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Role")
                         .IsRequired()
@@ -89,8 +92,8 @@ namespace CodebitsAcademyEFC.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(5)")
-                        .HasMaxLength(5);
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 

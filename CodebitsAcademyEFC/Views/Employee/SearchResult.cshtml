@@ -13,17 +13,18 @@
             <th>LastName</th>
             <th>Phone Number</th>
             <th>Age</th>
-            <th>Gender</th>
+            <th>Genderd</th>
         </tr>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@item.FirstName</td>
-                <td>@item.LastName</td>
-                <td>@item.PhoneNumber</td>
-                <td>@item.Age</td>
-                <td>@item.Gender</td>
-            </tr>
+    <tr>
+        <td>@item.PhotoPath</td>
+        <td>@item.FirstName</td>
+        <td>@item.LastName</td>
+        <td>@item.PhoneNumber</td>
+        <td>@item.Age</td>
+        <td>@item.Gender</td>
+    </tr>
         }
     </thead>
     <tbody>

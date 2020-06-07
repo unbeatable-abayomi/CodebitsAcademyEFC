@@ -11,5 +11,11 @@ namespace CodebitsAcademyEFC.AccountsRepository
         IEnumerable<SystemUsersModel> AllSystemUsers { get; }
 
         public void AddSystemUser(SystemUsersModel systemUsers);
+
+        SystemUsersModel GetSystemUser(long Id);
+        public void EditSystemUser(SystemUsersModel systemUsersModel);
+        public void DeleteSystemUser(SystemUsersModel systemUsersModel);
+
+        IQueryable<SystemUsersModel> Search(string surname);
     }
 }

@@ -9,15 +9,15 @@ namespace CodebitsAcademyEFC.Models
     public class SystemUsersModel
     {
         [Key]
-        [Required]
+        
         public long Id { get; set; }
 
         [Required]
-        [StringLength (5,MinimumLength =30, ErrorMessage = "You must enter between 5 characters to 30 Charaters ")]
+        [StringLength (50,MinimumLength =3, ErrorMessage = "You must enter between 5 characters to 30 Charaters ")]
         
         public string Username { get; set; }
         [Required]
-        [StringLength (5,MinimumLength =30, ErrorMessage = "You must enter between 5 characters to 30 Charaters ")]
+        [StringLength (50,MinimumLength =3, ErrorMessage = "You must enter between 5 characters to 30 Charaters ")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

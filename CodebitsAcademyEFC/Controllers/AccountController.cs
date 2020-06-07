@@ -43,5 +43,55 @@ namespace CodebitsAcademyEFC.Controllers
 
 
         }
+
+        public IActionResult Details(long Id)
+        {
+            SystemUsersModel systemUsersModel = _accounts.GetSystemUser(Id);
+            return View(systemUsersModel);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(long Id)
+        {
+            SystemUsersModel systemUsersModel = _accounts.GetSystemUser(Id);
+            return View(systemUsersModel);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(SystemUsersModel systemUsersModel)
+        {
+            _accounts.EditSystemUser(systemUsersModel);
+            return View("editSuccess",systemUsersModel);
+        }
+
+
+        [HttpGet]
+
+        public IActionResult Delete(long Id)
+        {
+            SystemUsersModel systemUsersModel = _accounts.GetSystemUser(Id);
+            return View(systemUsersModel);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(SystemUsersModel systemUsersModel)
+        {
+             _accounts.DeleteSystemUser(systemUsersModel);
+            return View("deleteSuccess",systemUsersModel);
+        }
+
+        [HttpGet]
+        public IActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Search(string surname)
+        {
+            IQueryable<SystemUsersModel> systemUsers = _accounts.Search(surname);
+            return View("searchView", systemUsers);
+        }
+
     }
 }

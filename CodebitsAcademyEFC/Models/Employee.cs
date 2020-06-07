@@ -10,6 +10,7 @@ namespace CodebitsAcademyEFC.Models
     {
         [Required]
       
+        [Key]
         public long Id { get; set; }
 
         [Required]
@@ -44,7 +45,7 @@ namespace CodebitsAcademyEFC.Models
         [RegularExpression(@"[0]\d{10}$", ErrorMessage = "Pls Enter a Vailid Number xxx-xxx-xxxx")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Photo Path")]
+        [Display(Name = "Photo")]
         public string PhotoPath { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿@model CodebitsAcademyEFC.Models.Employee
+﻿@*@model CodebitsAcademyEFC.Models.Employee*@
+@model CodebitsAcademyEFC.ViewModel.EmployeeViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -11,7 +12,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form enctype="multipart/form-data" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
@@ -49,9 +50,28 @@
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Photo" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="Photo" class="form-control custom-file-input" />
+                    <label class="custom-file-label"> Choose file ...</label>
+                </div>
+
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
+        @section Scripts{
+                <script>
+                    $(document).ready(function () {
+                      
+                        $('.custom-file-input').on('change', function () {
+                            var filename = $(this).val().split('\\').pop();
+                            $(this).next('.custom-file-label').html(filename);
+                        })
+                    });
+                </script>
+        }
     </div>
 </div>
 
@@ -59,6 +79,16 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
+@*@section Scripts {
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <script>
+        $(document).ready(function () {
+            alert("hello");
+            $('.custom-file-input').on('change', function () {
+                var filename = $(this).val().split('\\').pop();
+                $(this).next('.custom-file-label').html(filename);
+            })
+        });
+    </script>
+}*@

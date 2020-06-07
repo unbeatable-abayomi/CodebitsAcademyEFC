@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CodebitsAcademyEFC.EmployeeRepository;
 using CodebitsAcademyEFC.Models;
+using CodebitsAcademyEFC.ViewModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,10 +14,10 @@ namespace CodebitsAcademyEFC.Controllers
     public class EmployeeController : Controller
     {
         private readonly IEmployee _employee;
-        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IWebHostEnvironment webHostEnvironment;
         public EmployeeController(IEmployee employee, IWebHostEnvironment webHostEnvironment) {
             _employee = employee;
-            _webHostEnvironment = webHostEnvironment;
+            this.webHostEnvironment = webHostEnvironment;
 
         } 
        
@@ -36,12 +38,32 @@ namespace CodebitsAcademyEFC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Employee employee)
+        public IActionResult Create(EmployeeViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _employee.AddEmployee(employee);
-                return View("SuccessMessage", employee);
+                string uniqueFileName = null;
+                if (model.Photo != null)
+                {
+
+                    string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath,"images");
+                    uniqueFileName = Guid.NewGuid().ToString() +"_"+model.Photo.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                }
+                Employee employees = new Employee()
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Age = model.Age,
+                    PhoneNumber = model.PhoneNumber,
+                    Email = model.Email,
+                    Gender = model.Gender,
+                    Address = model.Address,
+                    PhotoPath = uniqueFileName
+                };
+                _employee.AddEmployee(employees);
+                return View("SuccessMessage", employees);
             }
             else
             {

@@ -17,5 +17,6 @@ namespace CodebitsAcademyEFC.AccountsRepository
         public void DeleteSystemUser(SystemUsersModel systemUsersModel);
 
         IQueryable<SystemUsersModel> Search(string surname);
+        public bool Authentiction(string username, string password);
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodebitsAcademyEFC.AccountsRepository
 {
-    public class AccountsDataRepository:IAccounts
+    public class AccountsDataRepository : IAccounts
     {
         private readonly DataContext _dataContext;
         public AccountsDataRepository(DataContext dataContext) => _dataContext = dataContext;
@@ -15,7 +15,7 @@ namespace CodebitsAcademyEFC.AccountsRepository
 
         public SystemUsersModel GetSystemUser(long Id)
         {
-          SystemUsersModel systemUsersModel =  _dataContext.SystemUsersTable.Find(Id);
+            SystemUsersModel systemUsersModel = _dataContext.SystemUsersTable.Find(Id);
             return systemUsersModel;
 
         }
@@ -34,19 +34,29 @@ namespace CodebitsAcademyEFC.AccountsRepository
 
         public void DeleteSystemUser(SystemUsersModel systemUsersModel)
         {
-           
+
             _dataContext.SystemUsersTable.Remove(systemUsersModel);
             _dataContext.SaveChanges();
         }
 
-        public  IQueryable<SystemUsersModel> Search(string surname)
+        public IQueryable<SystemUsersModel> Search(string surname)
         {
             IQueryable<SystemUsersModel> systemUser = _dataContext.SystemUsersTable.Where(user => user.Username.Contains(surname) || user.Role.Contains(surname) || user.Status.Contains(surname));
-           
+
             return systemUser;
         }
-
-
+        public bool Authentiction(string username, string password)
+        {
+            var user = _dataContext.SystemUsersTable.Where(name=>name.Username.Contains(username)&&name.Password.Contains(password));
+            if (user.Count() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
     }
 }

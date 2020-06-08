@@ -18,5 +18,6 @@ namespace CodebitsAcademyEFC.EmployeeRepository
 
         public void EditEmployee(Employee employee);
         IQueryable<Employee> Search(string Surname);
+      
     }
 }

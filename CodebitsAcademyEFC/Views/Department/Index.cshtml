@@ -1,0 +1,12 @@
+﻿@model CodebitsAcademyEFC.Models.Department
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+
+<label asp-for="Name"></label>
+<select asp-for="ID" asp-items="@(new SelectList(@ViewBag.AllDepts,"ID","Name"))"></select>
+

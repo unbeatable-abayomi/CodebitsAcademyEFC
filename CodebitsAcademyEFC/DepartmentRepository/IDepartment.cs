@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodebitsAcademyEFC.DepartmentRepository
 {
-    interface IDepartment
+     public interface IDepartment
     {
         IEnumerable <Department> AllDepartments { get; }
         public void AddDepartment(Department department);

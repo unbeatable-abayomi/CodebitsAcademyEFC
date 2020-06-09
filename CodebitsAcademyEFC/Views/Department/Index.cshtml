@@ -7,6 +7,9 @@
 <h1>Index</h1>
 
 
-<label asp-for="Name"></label>
-<select asp-for="ID" asp-items="@(new SelectList(@ViewBag.AllDepts,"ID","Name"))"></select>
+    <label class="custom-control-label" asp-for="Name"></label>
+
+    <select class="form-control-lg" asp-for="ID" asp-items="@(new SelectList(@ViewBag.AllDepts,"ID","Name"))"></select>
+
+
 

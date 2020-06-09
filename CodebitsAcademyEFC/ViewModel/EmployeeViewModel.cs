@@ -10,6 +10,11 @@ namespace CodebitsAcademyEFC.ViewModel
     public class EmployeeViewModel
     {
         [Required]
+
+        [Key]
+        public long Id { get; set; }
+
+        [Required]
         [StringLength(20, MinimumLength = 5)]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }

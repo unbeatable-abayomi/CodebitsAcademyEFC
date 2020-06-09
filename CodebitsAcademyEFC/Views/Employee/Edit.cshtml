@@ -1,5 +1,5 @@
-﻿@*@model CodebitsAcademyEFC.Models.Employee*@
-@model CodebitsAcademyEFC.ViewModel.EmployeeViewModel;
+﻿@model CodebitsAcademyEFC.Models.Employee
+@*@model CodebitsAcademyEFC.ViewModel.EmployeeViewModel;*@
 
 @{
     ViewData["Title"] = "Edit";
@@ -14,7 +14,7 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<input type="hidden" asp-for="Id" />*@
+            `<input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
                 <input asp-for="FirstName" class="form-control" />
@@ -51,9 +51,9 @@
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Photo" class="control-label"></label>
+                <label asp-for="PhotoPath" class="control-label"></label>
                 <div class="custom-file">
-                    <input asp-for="Photo" class="form-control custom-file-input" />
+                    <input asp-for="PhotoPath" class="form-control custom-file-input" />
                     <label class="custom-file-label"> Choose file ...</label>
                 </div>
 
@@ -64,7 +64,7 @@
             @section Scripts{
                 <script>
                     $(document).ready(function () {
-
+                        
                         $('.custom-file-input').on('change', function () {
                             var filename = $(this).val().split('\\').pop();
                             $(this).next('.custom-file-label').html(filename);

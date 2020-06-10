@@ -13,5 +13,7 @@ namespace CodebitsAcademyEFC.Models
         [Required]
         [StringLength (55,MinimumLength =3)]
         public  string Name { get; set; }
+
+        //public ICollection<Employee> Employees { get; set; }
     }
 }

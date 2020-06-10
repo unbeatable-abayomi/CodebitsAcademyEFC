@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using CodebitsAcademyEFC.DepartmentRepository;
 using CodebitsAcademyEFC.EmployeeRepository;
 using CodebitsAcademyEFC.Models;
 using CodebitsAcademyEFC.ViewModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CodebitsAcademyEFC.Controllers
 {
@@ -15,9 +17,11 @@ namespace CodebitsAcademyEFC.Controllers
     {
         private readonly IEmployee _employee;
         private readonly IWebHostEnvironment webHostEnvironment;
-        public EmployeeController(IEmployee employee, IWebHostEnvironment webHostEnvironment) {
+        private readonly IDepartment _department;
+        public EmployeeController(IEmployee employee, IWebHostEnvironment webHostEnvironment,IDepartment department) {
             _employee = employee;
             this.webHostEnvironment = webHostEnvironment;
+            _department = department;
 
         } 
        
@@ -34,36 +38,38 @@ namespace CodebitsAcademyEFC.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.Departments = new SelectList(_department.AllDepartments, "ID","Name");
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(EmployeeViewModel model)
+        public IActionResult  Create(Employee employee)
         {
+            ViewBag.Departments = new SelectList( _department.AllDepartments, "ID", "Name");
             if (ModelState.IsValid)
             {
-                string uniqueFileName = null;
-                if (model.Photo != null)
-                {
+                //string uniqueFileName = null;
+                //if (model.Photo != null)
+                //{
 
-                    string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath,"images");
-                    uniqueFileName = Guid.NewGuid().ToString() +"_"+model.Photo.FileName;
-                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                    model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
-                }
-                Employee employees = new Employee()
-                { Id = model.Id,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Age = model.Age,
-                    PhoneNumber = model.PhoneNumber,
-                    Email = model.Email,
-                    Gender = model.Gender,
-                    Address = model.Address,
-                    PhotoPath = uniqueFileName
-                };
-                _employee.AddEmployee(employees);
-                return View("SuccessMessage", employees);
+                //    string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath,"images");
+                //    uniqueFileName = Guid.NewGuid().ToString() +"_"+model.Photo.FileName;
+                //    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                //    model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                //}
+                //Employee employees = new Employee()
+                //{ Id = model.Id,
+                //    FirstName = model.FirstName,
+                //    LastName = model.LastName,
+                //    Age = model.Age,
+                //    PhoneNumber = model.PhoneNumber,
+                //    Email = model.Email,
+                //    Gender = model.Gender,
+                //    Address = model.Address,
+                //    PhotoPath = uniqueFileName
+                //};
+                _employee.AddEmployee(employee);
+                return View("SuccessMessage", employee);
             }
             else
             {

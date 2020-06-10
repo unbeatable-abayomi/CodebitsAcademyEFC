@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CodebitsAcademyEFC.AccountsRepository;
 using CodebitsAcademyEFC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace CodebitsAcademyEFC.Controllers
 {
@@ -17,7 +18,7 @@ namespace CodebitsAcademyEFC.Controllers
         {
             return View();
         }
-
+      
         public IActionResult Lists()
         {
             return View(_accounts.AllSystemUsers);
@@ -100,7 +101,13 @@ namespace CodebitsAcademyEFC.Controllers
         [HttpPost]
         public IActionResult Login(string username,string password)
         {
+            HttpContext.Session.SetString("Username", username);
+            ViewBag.MessageName = HttpContext.Session.GetString("Username");
+         
+            
             var status = _accounts.Authentiction(username, password);
+           
+            ViewData["Invalid"] = "Invalid User";
             ViewBag.Name = username; 
             if (status)
             {

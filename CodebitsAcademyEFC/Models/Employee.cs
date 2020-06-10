@@ -47,7 +47,7 @@ namespace CodebitsAcademyEFC.Models
 
         [Display(Name = "Photo")]
         public string PhotoPath { get; set; }
-
+        [Display(Name = "Employee Department")]
         public int DeparmentId { get; set; }
         public Department Department { get; set; }
     }

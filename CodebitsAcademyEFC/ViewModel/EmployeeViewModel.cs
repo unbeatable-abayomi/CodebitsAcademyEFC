@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CodebitsAcademyEFC.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -45,7 +46,8 @@ namespace CodebitsAcademyEFC.ViewModel
         [Required]
         [RegularExpression(@"[0]\d{10}$", ErrorMessage = "Pls Enter a Vailid Number xxx-xxx-xxxx")]
         public string PhoneNumber { get; set; }
-
+        public int DeparmentId { get; set; }
+        public Department Department { get; set; }
         public IFormFile Photo { get; set; }
     }
 }

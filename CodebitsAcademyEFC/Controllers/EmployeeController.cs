@@ -43,33 +43,34 @@ namespace CodebitsAcademyEFC.Controllers
         }
 
         [HttpPost]
-        public IActionResult  Create(Employee employee)
+        public IActionResult  Create(EmployeeViewModel model)
         {
             ViewBag.Departments = new SelectList( _department.AllDepartments, "ID", "Name");
             if (ModelState.IsValid)
             {
-                //string uniqueFileName = null;
-                //if (model.Photo != null)
-                //{
+                string uniqueFileName = null;
+                if (model.Photo != null)
+                {
 
-                //    string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath,"images");
-                //    uniqueFileName = Guid.NewGuid().ToString() +"_"+model.Photo.FileName;
-                //    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                //    model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
-                //}
-                //Employee employees = new Employee()
-                //{ Id = model.Id,
-                //    FirstName = model.FirstName,
-                //    LastName = model.LastName,
-                //    Age = model.Age,
-                //    PhoneNumber = model.PhoneNumber,
-                //    Email = model.Email,
-                //    Gender = model.Gender,
-                //    Address = model.Address,
-                //    PhotoPath = uniqueFileName
-                //};
-                _employee.AddEmployee(employee);
-                return View("SuccessMessage", employee);
+                    string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                }
+                Employee employees = new Employee()
+                {
+                    //Id = model.Id,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Age = model.Age,
+                    PhoneNumber = model.PhoneNumber,
+                    Email = model.Email,
+                    Gender = model.Gender,
+                    Address = model.Address,
+                    PhotoPath = uniqueFileName
+                };
+                _employee.AddEmployee(employees);
+                return View("SuccessMessage", employees);
             }
             else
             {

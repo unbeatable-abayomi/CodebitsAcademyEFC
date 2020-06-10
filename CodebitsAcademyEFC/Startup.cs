@@ -60,7 +60,7 @@ namespace CodebitsAcademyEFC
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseSession();
 
@@ -69,6 +69,8 @@ namespace CodebitsAcademyEFC
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                //addedNewly
+                endpoints.MapRazorPages();
             });
         }
     }

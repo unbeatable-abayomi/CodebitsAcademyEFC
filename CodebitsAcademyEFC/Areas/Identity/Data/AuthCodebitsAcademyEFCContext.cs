@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CodebitsAcademyEFC.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CodebitsAcademyEFC.Data
 {
-    public class AuthCodebitsAcademyEFCContext : IdentityDbContext<IdentityUser>
+    public class AuthCodebitsAcademyEFCContext : IdentityDbContext<ApplicationUsers>
     {
         public AuthCodebitsAcademyEFCContext(DbContextOptions<AuthCodebitsAcademyEFCContext> options)
             : base(options)

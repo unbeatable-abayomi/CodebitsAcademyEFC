@@ -38,6 +38,10 @@ namespace CodebitsAcademyEFC
             services.AddTransient<IDepartment, DepartmentDataRepository>();
             string conString = Configuration["ConnectionString:CodeBitsConection"];
             services.AddDbContext<DataContext>(options => options.UseSqlServer(conString));
+            //string conString1 = Configuration["ConnectionString:AuthCodebitsAcademyEFCContextConnection"];
+            //services.AddDbContext<DataContext>(options => options.UseSqlServer(conString1));
+
+          
             services.AddRazorPages().AddRazorRuntimeCompilation();
             
            

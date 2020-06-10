@@ -1,4 +1,5 @@
 ﻿using System;
+using CodebitsAcademyEFC.Areas.Identity.Data;
 using CodebitsAcademyEFC.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -19,7 +20,7 @@ namespace CodebitsAcademyEFC.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("AuthCodebitsAcademyEFCContextConnection")));
 
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                services.AddDefaultIdentity<ApplicationUsers>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<AuthCodebitsAcademyEFCContext>();
             });
         }

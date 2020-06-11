@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CodebitsAcademyEFC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using CodebitsAcademyEFC.Models;
+using System.Diagnostics;
 
 namespace CodebitsAcademyEFC.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -22,7 +20,7 @@ namespace CodebitsAcademyEFC.Controllers
         {
             return View();
         }
-
+        //[Authorize]
         public IActionResult Privacy()
         {
             return View();

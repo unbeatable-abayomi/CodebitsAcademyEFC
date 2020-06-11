@@ -6,9 +6,11 @@ using CodebitsAcademyEFC.AccountsRepository;
 using CodebitsAcademyEFC.DepartmentRepository;
 using CodebitsAcademyEFC.EmployeeRepository;
 using CodebitsAcademyEFC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +32,13 @@ namespace CodebitsAcademyEFC
         {
             
             services.AddControllersWithViews();
+            //services.AddMvc(o =>
+            //{
+            //    var policy = new AuthorizationPolicyBuilder()
+            //        .RequireAuthenticatedUser()
+            //        .Build();
+            //    o.Filters.Add(new AuthorizeFilter(policy));
+            //});
             services.AddDistributedMemoryCache();
             services.AddSession();
             
@@ -64,8 +73,9 @@ namespace CodebitsAcademyEFC
             app.UseStaticFiles();
 
             app.UseRouting();
-            app.UseAuthentication();
             app.UseAuthorization();
+            app.UseAuthentication();
+            
             app.UseSession();
 
             app.UseEndpoints(endpoints =>

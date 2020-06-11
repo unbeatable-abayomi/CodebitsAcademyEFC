@@ -7,12 +7,14 @@ using CodebitsAcademyEFC.DepartmentRepository;
 using CodebitsAcademyEFC.EmployeeRepository;
 using CodebitsAcademyEFC.Models;
 using CodebitsAcademyEFC.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CodebitsAcademyEFC.Controllers
 {
+    //[Authorize]
     public class EmployeeController : Controller
     {
         private readonly IEmployee _employee;
@@ -30,7 +32,7 @@ namespace CodebitsAcademyEFC.Controllers
             return View();
         }
 
-
+        //[Authorize]
         public IActionResult Lists()
         {
             return View(_employee.Employees);
